@@ -1,0 +1,19 @@
+<div class="stats-card">
+  <div class="stat-item">
+    <mat-icon class="stat-icon primary">list_alt</mat-icon>
+    <div class="stat-value primary">{{ todoService.totalTodos() }}</div>
+    <div class="stat-label">Total</div>
+  </div>
+  
+  <div class="stat-item">
+    <mat-icon class="stat-icon warning">pending_actions</mat-icon>
+    <div class="stat-value warning">{{ todoService.pendingCount() }}</div>
+    <div class="stat-label">Pendentes</div>
+  </div>
+  
+  <div class="stat-item">
+    <mat-icon class="stat-icon success">check_circle</mat-icon>
+    <div class="stat-value success">{{ todoService.completedCount() }}</div>
+    <div class="stat-label">Concluídas</div>
+  </div>
+</div>

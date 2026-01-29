@@ -1,0 +1,84 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fafafa;
+}
+
+.app-toolbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.content-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.filters-container {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-group {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  mat-button-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    
+    mat-icon {
+      margin: 0;
+    }
+  }
+}
+
+.todo-list-wrapper {
+  flex: 1;
+  overflow: hidden;
+}
+
+.fab-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .filter-group mat-button-toggle span {
+    display: none;
+  }
+  
+  .fab-button {
+    bottom: 16px;
+    right: 16px;
+  }
+}

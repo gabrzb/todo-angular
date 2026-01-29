@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>{{ data.isEditing ? 'Editar Tarefa' : 'Nova Tarefa' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="todoForm" class="todo-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título</mat-label>
+      <input 
+        matInput 
+        formControlName="title" 
+        placeholder="Digite o título da tarefa"
+        autofocus
+      >
+      <mat-icon matPrefix>title</mat-icon>
+      <mat-error *ngIf="todoForm.get('title')?.hasError('required')">
+        Por favor, insira um título
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descrição (opcional)</mat-label>
+      <textarea 
+        matInput 
+        formControlName="description" 
+        placeholder="Digite uma descrição"
+        rows="3"
+      ></textarea>
+      <mat-icon matPrefix>notes</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    (click)="onSubmit()"
+    [disabled]="!todoForm.valid"
+  >
+    {{ data.isEditing ? 'Salvar' : 'Adicionar' }}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,63 @@
+<div class="app-container">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <span class="app-title">Minhas Tarefas</span>
+    <span class="spacer"></span>
+    <button 
+      *ngIf="todoService.completedCount() > 0"
+      mat-icon-button 
+      (click)="deleteCompletedTodos()"
+      matTooltip="Limpar concluídas"
+    >
+      <mat-icon>delete_sweep</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="content-container">
+    <div *ngIf="isLoading()" class="loading-container">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading()" class="main-content">
+      <!-- Card de estatísticas -->
+      <app-stats-card [todoService]="todoService"></app-stats-card>
+
+      <!-- Filtros -->
+      <div class="filters-container">
+        <mat-button-toggle-group 
+          [(value)]="selectedFilter"
+          class="filter-group"
+        >
+          <mat-button-toggle [value]="0">
+            <mat-icon>list</mat-icon>
+            <span>Todas</span>
+          </mat-button-toggle>
+          <mat-button-toggle [value]="1">
+            <mat-icon>radio_button_unchecked</mat-icon>
+            <span>Pendentes</span>
+          </mat-button-toggle>
+          <mat-button-toggle [value]="2">
+            <mat-icon>check_circle_outline</mat-icon>
+            <span>Concluídas</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- Lista de tarefas -->
+      <div class="todo-list-wrapper">
+        <app-todo-list [filter]="selectedFilter"></app-todo-list>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão flutuante para adicionar tarefa -->
+  <button 
+    mat-fab 
+    extended 
+    color="primary" 
+    class="fab-button"
+    (click)="openAddTodoDialog()"
+  >
+    <mat-icon>add</mat-icon>
+    Nova Tarefa
+  </button>
+</div>

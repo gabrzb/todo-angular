@@ -1,0 +1,44 @@
+<mat-card class="todo-card" [class.completed]="todo.isCompleted">
+  <div class="todo-content">
+    <div class="todo-left">
+      <mat-icon class="drag-handle">drag_handle</mat-icon>
+      <mat-checkbox 
+        [checked]="todo.isCompleted"
+        (change)="onToggle()"
+        color="primary"
+        class="circle-checkbox"
+      ></mat-checkbox>
+    </div>
+
+    <div class="todo-main">
+      <div class="todo-title" [class.completed-text]="todo.isCompleted">
+        {{ todo.title }}
+      </div>
+      <div 
+        *ngIf="todo.description" 
+        class="todo-description" 
+        [class.completed-text]="todo.isCompleted"
+      >
+        {{ todo.description }}
+      </div>
+    </div>
+
+    <div class="todo-actions">
+      <button 
+        mat-icon-button 
+        (click)="onEdit()"
+        matTooltip="Editar"
+      >
+        <mat-icon>edit_outlined</mat-icon>
+      </button>
+      <button 
+        mat-icon-button 
+        (click)="onDelete()"
+        matTooltip="Excluir"
+        color="warn"
+      >
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

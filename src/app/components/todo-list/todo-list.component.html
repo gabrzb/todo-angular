@@ -1,0 +1,27 @@
+<div class="todo-list-container">
+  <div *ngIf="filteredTodos().length === 0" class="empty-state">
+    <mat-icon class="empty-icon">{{ emptyIcon() }}</mat-icon>
+    <h2 class="empty-title">{{ emptyMessage() }}</h2>
+    <p class="empty-subtitle">Adicione uma nova tarefa para começar</p>
+  </div>
+
+  <div 
+    *ngIf="filteredTodos().length > 0"
+    cdkDropList 
+    class="todo-list"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <div 
+      *ngFor="let todo of filteredTodos(); trackBy: trackByFn"
+      cdkDrag
+      class="todo-item-wrapper"
+    >
+      <app-todo-item
+        [todo]="todo"
+        (toggle)="onToggleTodo(todo.id)"
+        (edit)="onEditTodo(todo)"
+        (delete)="onDeleteTodo(todo)"
+      ></app-todo-item>
+    </div>
+  </div>
+</div>
