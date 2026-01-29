@@ -1,6 +1,7 @@
 # Todo (lista de tarefas)
 
 Aplicação **To-do** desenvolvida com **Angular** como prática de conhecimentos e organização de projeto. O exercício contempla ambiente de desenvolvimento, build otimizado para produção e execução via servidor HTTP simples.
+
 Para consultar a aplicação ao vivo, [clique aqui](https://gabrzb.github.io/todo-angular/)
 
 ---
